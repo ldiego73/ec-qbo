@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import { Container } from "../container";
 import { COLOR_PRIMARY, HEADER_HEIGHT, TEXT_COLOR_INVERSE } from "../variables";
@@ -14,7 +15,7 @@ const Wrapper = styled.header`
   color: ${TEXT_COLOR_INVERSE};
 `;
 
-const Title = styled.a`
+const Title = styled(Link)`
   font-size: 24px;
   font-weight: bold;
   cursor: pointer;
@@ -30,14 +31,14 @@ const Title = styled.a`
 
 const links = [
   { title: "Nuestra historia", to: "/history" },
-  { title: "Nuestros productos", to: "/store" },
+  { title: "Nuestros productos", to: "/products" },
 ];
 
 export const Header = () => (
   <Wrapper>
     <Container height={HEADER_HEIGHT}>
       <Content align="center">
-        <Title href="/">EC QBO</Title>
+        <Title to="/">EC QBO</Title>
         <HeaderLinks links={links} />
         <HeaderActions />
       </Content>

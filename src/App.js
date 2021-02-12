@@ -1,12 +1,12 @@
-import { Header } from "./components/header";
-import { Footer } from "./components/footer";
+import { BrowserRouter as Router } from "react-router-dom";
+
+import { Navigation } from "./features/navigation";
 
 function App() {
   return (
-    <div>
-      <Header />
-      <Footer />
-    </div>
+    <Router>
+      <Navigation />
+    </Router>
   );
 }
 

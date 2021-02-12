@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
 import { ReactComponent as User } from "./icons/user.svg";
 import { ReactComponent as Store } from "./icons/store.svg";
 import { COLOR_WHITE, TEXT_COLOR_INVERSE } from "../variables";
@@ -26,7 +28,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const ActionStore = styled.a`
+const ActionStore = styled(Link)`
   display: inline-block;
   cursor: pointer;
   margin-right: ${margin}px;
@@ -36,7 +38,7 @@ const ActionStore = styled.a`
   }
 `;
 
-const ActionLogin = styled.a`
+const ActionLogin = styled(Link)`
   display: inline-block;
   cursor: pointer;
   margin-left: ${margin}px;
@@ -55,11 +57,11 @@ const Separator = styled.span`
 
 export const HeaderActions = () => (
   <Wrapper>
-    <ActionStore href="/cart">
+    <ActionStore to="/cart">
       <Store /> S/ 0.00
     </ActionStore>
     <Separator />
-    <ActionLogin href="/oauth/login">
+    <ActionLogin to="/oauth/login">
       <User /> Iniciar Sesión
     </ActionLogin>
   </Wrapper>

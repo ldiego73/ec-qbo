@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { Container } from "../container";
 import {
   COLOR_GRAY,
@@ -26,7 +27,7 @@ const Info = styled.div`
   align-items: center;
 `;
 
-const Title = styled.a`
+const Title = styled(Link)`
   font-size: 24px;
   font-weight: bold;
   cursor: pointer;
@@ -79,7 +80,7 @@ export const Footer = () => (
     <Container height={FOOTER_HEIGHT}>
       <Content direction="column" justiy="center">
         <Info>
-          <Title href="/">EC QBO</Title>
+          <Title to="/">EC QBO</Title>
           <Social>
             SÍGUENOS EN
             <Icons>

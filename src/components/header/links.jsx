@@ -1,11 +1,13 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
 import { TEXT_COLOR_INVERSE } from "../variables";
 
 const Wrapper = styled.div`
   margin-left: 40px;
 `;
 
-const LinkWrapper = styled.a`
+const LinkWrapper = styled(Link)`
   flex: 1;
   color: ${TEXT_COLOR_INVERSE};
   text-decoration: none;
@@ -25,7 +27,7 @@ const LinkWrapper = styled.a`
 export const HeaderLinks = ({ links }) => (
   <Wrapper>
     {links.map((link, i) => (
-      <LinkWrapper key={`header-link-${i}`} href={link.to}>
+      <LinkWrapper key={`header-link-${i}`} to={link.to}>
         {link.title}
       </LinkWrapper>
     ))}

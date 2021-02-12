@@ -1,11 +1,11 @@
-import { Button } from "./components/atomos/buttons/button";
-import { Title } from "./components/atomos/titles/Title";
+import { Header } from "./components/header";
+import { Footer } from "./components/footer";
 
 function App() {
   return (
     <div>
-      <Button value="Hola" />
-      <Title value="Nuestras ofertas de hoy" />
+      <Header />
+      <Footer />
     </div>
   );
 }

@@ -1,21 +1,13 @@
 import styled from "styled-components";
+import axios from "axios";
+import { useState, useEffect } from "react";
+
 import {
   COLOR_GRAY_LIGHT,
   TEXT_COLOR_PRIMARY,
 } from "../../../components/variables";
 
 const url = "https://ec-qbo.herokuapp.com/categories";
-const items = [
-  { title: "Promociones", image: `${url}/promociones.svg` },
-  { title: "Dim Sum", image: `${url}/dim-sum.svg` },
-  { title: "Menu", image: `${url}/menu.svg` },
-  { title: "Sopas", image: `${url}/sopas.svg` },
-  { title: "Bebidas", image: `${url}/bebidas.svg` },
-  { title: "Platos dulces", image: `${url}/platos-dulces.svg` },
-  { title: "Platos salados", image: `${url}/platos-salados.svg` },
-  { title: "A la Carta", image: `${url}/a-la-carta.svg` },
-  { title: "Familiar", image: `${url}/familiar.svg` },
-];
 
 const Wrapper = styled.div`
   display: flex;
@@ -49,15 +41,37 @@ const Title = styled.div`
   color: ${TEXT_COLOR_PRIMARY};
 `;
 
-export const Categories = () => (
-  <Wrapper>
-    {items.map((item, i) => (
-      <Icon key={`category-icon-${i}`}>
-        <Circle>
-          <img src={item.image} alt={item.title} />
-        </Circle>
-        <Title>{item.title}</Title>
-      </Icon>
-    ))}
-  </Wrapper>
-);
+function mapToModel(category, index) {
+  return {
+    key: `category-${index}`,
+    name: category.name,
+    imagen: `${url}/${category.imagen}`,
+  };
+}
+
+export function Categories() {
+  const [categories, setCategories] = useState(undefined);
+  const getCategories = async () => {
+    const { data } = await axios.get(url);
+
+    setCategories(data.map((c, i) => mapToModel(c, i)));
+  };
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  return (
+    <Wrapper>
+      {categories &&
+        categories.map((item) => (
+          <Icon key={item.key}>
+            <Circle>
+              <img src={item.imagen} alt={item.name} loading="lazy" />
+            </Circle>
+            <Title>{item.name}</Title>
+          </Icon>
+        ))}
+    </Wrapper>
+  );
+}

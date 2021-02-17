@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import axios from "axios";
 import { useState, useEffect } from "react";
+import { useFetch } from "../../../hooks/use-fetch";
 
 import {
   COLOR_GRAY_LIGHT,
@@ -50,16 +50,14 @@ function mapToModel(category, index) {
 }
 
 export function Categories() {
-  const [categories, setCategories] = useState(undefined);
-  const getCategories = async () => {
-    const { data } = await axios.get(url);
-
-    setCategories(data.map((c, i) => mapToModel(c, i)));
-  };
+  const [data] = useFetch(url);
+  const [categories, setCategories] = useState(null);
 
   useEffect(() => {
-    getCategories();
-  }, []);
+    if (data) {
+      setCategories(data.map((c, i) => mapToModel(c, i)));
+    }
+  }, [data]);
 
   return (
     <Wrapper>

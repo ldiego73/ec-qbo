@@ -7,6 +7,7 @@ import { NotFoundPage } from "./home/pages/not-found";
 import { CartPage } from "./cart/pages";
 import { CheckoutPage } from "./checkout/pages";
 import { ProductsPage } from "./products/pages";
+import { DetailPage } from "./products/pages/detail";
 
 export const Navigation = () => (
   <Switch>
@@ -16,6 +17,7 @@ export const Navigation = () => (
     <Route exact path="/cart" component={CartPage} />
     <Route exact path="/checkout" component={CheckoutPage} />
     <Route exact path="/products" component={ProductsPage} />
+    <Route exact path="/products/:id" component={DetailPage} />
     <Route path="*" component={NotFoundPage} />
   </Switch>
 );

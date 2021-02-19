@@ -5,6 +5,7 @@ import { Container } from "../components/container";
 import { Content } from "../components/content";
 import { Delivery } from "../components/delivery";
 import { Banner, BannerImage } from "../components/banner";
+import { EcommerceProvider } from "../contexts/ecommerce.provider";
 
 export const Layout = ({ children, showDelivery, showBanner }) => {
   const images = [

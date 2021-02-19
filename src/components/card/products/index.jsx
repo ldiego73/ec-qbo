@@ -13,6 +13,7 @@ const Image = styled.img`
   border-radius: 8px;
   margin-bottom: 16px;
   object-fit: cover;
+  cursor: pointer;
 `;
 
 const Header = styled.div`
@@ -58,19 +59,31 @@ const Footer = styled.div`
   display: flex;
 `;
 
-export const CardProduct = ({ product, width }) => (
-  <Wrapper width={width}>
-    <Image src={product.image} loading="lazy" />
-    <Header>
-      <SubTitle>{product.group}</SubTitle>
-      <PriceOld>S/. {product.priceOld}</PriceOld>
-    </Header>
-    <Body>
-      <Title>{product.name}</Title>
-      <Price>S/. {product.price}</Price>
-    </Body>
-    <Footer>
-      <Button type="primary" value="Agregar" />
-    </Footer>
-  </Wrapper>
-);
+export function CardProduct({ product, width, onClicked }) {
+  function handleClick(p) {
+    if (typeof onClicked === "function") {
+      onClicked(p);
+    }
+  }
+
+  return (
+    <Wrapper width={width}>
+      <Image
+        src={product.image}
+        loading="lazy"
+        onClick={() => handleClick(product)}
+      />
+      <Header>
+        <SubTitle>{product.group}</SubTitle>
+        <PriceOld>S/. {product.priceOld}</PriceOld>
+      </Header>
+      <Body>
+        <Title>{product.name}</Title>
+        <Price>S/. {product.price}</Price>
+      </Body>
+      <Footer>
+        <Button type="primary" value="Agregar" />
+      </Footer>
+    </Wrapper>
+  );
+}

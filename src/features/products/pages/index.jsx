@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 
 import {
   TEXT_COLOR_PRIMARY,
@@ -7,8 +7,11 @@ import {
 } from "../../../components/variables";
 
 import { Layout } from "../../../layouts/main";
-import { useFetch } from "../../../hooks/use-fetch";
 import { CardProduct } from "../../../components/card/products";
+
+import { useCategories, useProducts } from "../core/hooks";
+import { Redirect } from "react-router-dom";
+import { EcommerceContext } from "../../../contexts/ecommerce.context";
 
 const Wrapper = styled.div`
   display: flex;
@@ -77,96 +80,41 @@ const ProductRow = styled.div`
   margin-bottom: 40px;
 `;
 
-const url = "https://ec-qbo.herokuapp.com";
-
 export function ProductsPage() {
-  const [categories] = useFetch(`${url}/categories`);
-  const [dataProducts] = useFetch(`${url}/products`);
-  const [products, setProducts] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState(-1);
+  const { updateProduct } = useContext(EcommerceContext);
+  const categories = useCategories();
+  const [selectedCategory, setSelectedCategory] = useState(0);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [name, setName] = useState("");
 
-  function handleChangeName(name) {
-    setProducts(getProducts(0, name));
-    setSelectedCategory(0);
+  const products = useProducts(selectedCategory, name);
+
+  function handleChangeName(value) {
+    setName(value);
   }
 
   function handleCategoryClicked(category) {
     if (category.id === selectedCategory) {
-      setSelectedCategory(-1);
-      setProducts(getProducts());
+      setSelectedCategory(0);
     } else {
       setSelectedCategory(category.id);
-      setProducts(getProducts(category.id));
     }
   }
 
-  function mapToModel(product) {
-    return {
-      id: product.id,
-      category: product.category_id,
-      group: product.group,
-      name: product.name,
-      price: product.price,
-      priceOld: product.price_old,
-      image: `${url}/products/${product.image}`,
-    };
+  function handleProductClicked(p) {
+    updateProduct(p);
+    setSelectedProduct(p);
   }
-
-  function findProductByName(product, name) {
-    const productName = product.name.toLowerCase();
-    const groupName = product.group.toLowerCase();
-    const searchName = name.toLowerCase();
-
-    return (
-      productName.indexOf(searchName) > -1 || groupName.indexOf(searchName) > -1
-    );
-  }
-
-  function getProducts(categoryId, name) {
-    const data = [];
-    let j = 0;
-
-    let findProducts;
-
-    if (categoryId) {
-      findProducts = dataProducts.filter(
-        (product) => product.category_id === categoryId
-      );
-    } else {
-      findProducts = [...dataProducts];
-    }
-
-    if (name) {
-      findProducts = dataProducts.filter((product) =>
-        findProductByName(product, name)
-      );
-    }
-
-    findProducts.forEach((product, index) => {
-      if (index % 3 === 0) data[j] = [];
-
-      data[j].push({
-        key: `product-${index}`,
-        product: mapToModel(product),
-      });
-
-      if (index % 3 === 2) j++;
-    });
-
-    return data;
-  }
-
-  useEffect(() => {}, [categories]);
-  useEffect(() => {
-    if (dataProducts) {
-      const result = getProducts();
-
-      setProducts(result);
-    }
-  }, [dataProducts]);
 
   return (
     <Layout showDelivery={true}>
+      {selectedProduct && (
+        <Redirect
+          to={{
+            pathname: `/products/${selectedProduct.id}`,
+          }}
+        />
+      )}
       <Wrapper>
         <Sidebar>
           <Title>Nuestros Productos</Title>
@@ -196,7 +144,12 @@ export function ProductsPage() {
             products.map((items, index) => (
               <ProductRow key={`product-row-${index}`}>
                 {items.map(({ product, key }) => (
-                  <CardProduct key={key} product={product} width={280} />
+                  <CardProduct
+                    key={key}
+                    product={product}
+                    width={280}
+                    onClicked={handleProductClicked}
+                  />
                 ))}
               </ProductRow>
             ))

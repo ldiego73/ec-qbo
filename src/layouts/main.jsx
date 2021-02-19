@@ -1,11 +1,10 @@
 import { node, bool } from "prop-types";
-import { Header } from "../components/header";
-import { Footer } from "../components/footer";
-import { Container } from "../components/container";
-import { Content } from "../components/content";
-import { Delivery } from "../components/delivery";
-import { Banner, BannerImage } from "../components/banner";
-import { EcommerceProvider } from "../contexts/ecommerce.provider";
+import { Header } from "@components/header";
+import { Footer } from "@components/footer";
+import { Container } from "@components/container";
+import { Content } from "@components/content";
+import { Delivery } from "@components/delivery";
+import { Banner, BannerImage } from "@components/banner";
 
 export const Layout = ({ children, showDelivery, showBanner }) => {
   const images = [

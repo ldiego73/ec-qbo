@@ -1,5 +1,5 @@
-import { useFetch } from "../../../../hooks/use-fetch";
-import { API_URL } from "../../../base";
+import { useFetch } from "@hooks/use-fetch";
+import { API_URL } from "@features/base";
 import { mapToModel } from "../mappers/product.mapper";
 
 export function usePopulares() {

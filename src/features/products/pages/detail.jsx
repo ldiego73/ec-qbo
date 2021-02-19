@@ -83,7 +83,15 @@ export function DetailPage() {
   const { product } = useContext(EcommerceContext);
 
   function isInvalidProductAndId() {
-    return isNaN(params.id) || Object.keys(product).length < 1;
+    const invalid = isNaN(params.id) || Object.keys(product).length < 1;
+
+    if (invalid) return true;
+
+    const productId = product.id || 0;
+
+    if (productId.toString() !== params.id) return true;
+
+    return false;
   }
 
   return (
@@ -93,11 +101,7 @@ export function DetailPage() {
         <Back to="/products">Volver al catálogo</Back>
         <Product>
           <ProductImage>
-            <img
-              src={product.image}
-              alt={product.name}
-              loading="lazy"
-            />
+            <img src={product.image} alt={product.name} loading="lazy" />
           </ProductImage>
           <ProductInfo>
             <ProductCategory>{product.group}</ProductCategory>

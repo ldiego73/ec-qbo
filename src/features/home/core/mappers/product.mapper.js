@@ -2,6 +2,7 @@ import { API_URL } from "../../../base";
 
 export function mapToModel(product, index) {
   return {
+    id: product.id,
     key: `product-${index}`,
     name: product.name,
     group: product.group,

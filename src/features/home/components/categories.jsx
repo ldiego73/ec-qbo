@@ -6,6 +6,7 @@ import {
   COLOR_GRAY_LIGHT,
   TEXT_COLOR_PRIMARY,
 } from "../../../components/variables";
+import { Redirect } from "react-router-dom";
 
 const Wrapper = styled.div`
   display: flex;
@@ -41,12 +42,25 @@ const Title = styled.div`
 
 export function Categories() {
   const categories = useCategories();
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  function handleClick(category) {
+    setSelectedCategory(category);
+  }
 
   return (
     <Wrapper>
+      {selectedCategory && (
+        <Redirect
+          to={{
+            pathname: `/products`,
+            search: `category=${selectedCategory.id}`,
+          }}
+        />
+      )}
       {categories &&
         categories.map((item) => (
-          <Icon key={item.key}>
+          <Icon key={item.key} onClick={() => handleClick(item)}>
             <Circle>
               <img src={item.imagen} alt={item.name} loading="lazy" />
             </Circle>

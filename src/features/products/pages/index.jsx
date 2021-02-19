@@ -80,10 +80,19 @@ const ProductRow = styled.div`
   margin-bottom: 40px;
 `;
 
+function getDefaultCategory() {
+  const query = new URLSearchParams(window.location.search);
+
+  if (query.has("category")) return parseInt(query.get("category"));
+
+  return 0;
+}
+
 export function ProductsPage() {
+  const defaultCategory = getDefaultCategory();
   const { updateProduct } = useContext(EcommerceContext);
   const categories = useCategories();
-  const [selectedCategory, setSelectedCategory] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState(defaultCategory);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [name, setName] = useState("");
 
@@ -141,18 +150,22 @@ export function ProductsPage() {
         </Sidebar>
         <Products>
           {products ? (
-            products.map((items, index) => (
-              <ProductRow key={`product-row-${index}`}>
-                {items.map(({ product, key }) => (
-                  <CardProduct
-                    key={key}
-                    product={product}
-                    width={280}
-                    onClicked={handleProductClicked}
-                  />
-                ))}
-              </ProductRow>
-            ))
+            products.length > 0 ? (
+              products.map((items, index) => (
+                <ProductRow key={`product-row-${index}`}>
+                  {items.map(({ product, key }) => (
+                    <CardProduct
+                      key={key}
+                      product={product}
+                      width={280}
+                      onClicked={handleProductClicked}
+                    />
+                  ))}
+                </ProductRow>
+              ))
+            ) : (
+              <div>Not Found</div>
+            )
           ) : (
             <div>Loading...</div>
           )}

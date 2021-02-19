@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
 import { CardProduct } from "../../../components/card/products";
 import { Title } from "../../../components/title";
 import { TEXT_COLOR_SECONDARY } from "../../../components/variables";
@@ -15,12 +17,13 @@ const Header = styled.div`
   width: 100%;
 `;
 
-const Link = styled.div`
+const LinkWrapper = styled(Link)`
   font-weight: bold;
   font-size: 16px;
   line-height: 16px;
   color: ${TEXT_COLOR_SECONDARY};
   cursor: pointer;
+  text-decoration: none;
 `;
 
 const Products = styled.div`
@@ -32,7 +35,7 @@ export const Ofertas = ({ title, products }) => (
   <Wrapper>
     <Header>
       <Title value={title} flex={true} />
-      <Link>Ver catálogo completo</Link>
+      <LinkWrapper to="/products">Ver catálogo completo</LinkWrapper>
     </Header>
     <Products>
       {products.map((p, i) => (

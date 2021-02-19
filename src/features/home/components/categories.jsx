@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { useFetch } from "../../../hooks/use-fetch";
+import { useCategories } from "../core";
 
 import {
   COLOR_GRAY_LIGHT,
   TEXT_COLOR_PRIMARY,
 } from "../../../components/variables";
-
-const url = "https://ec-qbo.herokuapp.com/categories";
 
 const Wrapper = styled.div`
   display: flex;
@@ -41,23 +39,8 @@ const Title = styled.div`
   color: ${TEXT_COLOR_PRIMARY};
 `;
 
-function mapToModel(category, index) {
-  return {
-    key: `category-${index}`,
-    name: category.name,
-    imagen: `${url}/${category.imagen}`,
-  };
-}
-
 export function Categories() {
-  const [data] = useFetch(url);
-  const [categories, setCategories] = useState(null);
-
-  useEffect(() => {
-    if (data) {
-      setCategories(data.map((c, i) => mapToModel(c, i)));
-    }
-  }, [data]);
+  const categories = useCategories();
 
   return (
     <Wrapper>

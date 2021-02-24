@@ -59,10 +59,16 @@ const Footer = styled.div`
   display: flex;
 `;
 
-export function CardProduct({ product, width, onClicked }) {
+export function CardProduct({ product, width, onClicked, onAddProduct }) {
   function handleClick(p) {
     if (typeof onClicked === "function") {
       onClicked(p);
+    }
+  }
+
+  function handleAddProduct(p) {
+    if (typeof onAddProduct === "function") {
+      onAddProduct(p);
     }
   }
 
@@ -82,7 +88,11 @@ export function CardProduct({ product, width, onClicked }) {
         <Price>S/. {product.price}</Price>
       </Body>
       <Footer>
-        <Button type="primary" value="Agregar" />
+        <Button
+          type="primary"
+          value="Agregar"
+          onButtonClicked={() => handleAddProduct(product)}
+        />
       </Footer>
     </Wrapper>
   );

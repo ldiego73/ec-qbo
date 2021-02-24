@@ -34,12 +34,16 @@ const Products = styled.div`
 `;
 
 export function Ofertas({ title, products }) {
-  const { updateProduct } = useContext(EcommerceContext);
+  const { updateProduct, addProductToCart } = useContext(EcommerceContext);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   function handleProductClicked(p) {
     updateProduct(p);
     setSelectedProduct(p);
+  }
+
+  function handleAddProduct(p) {
+    addProductToCart(p);
   }
 
   return (
@@ -62,6 +66,7 @@ export function Ofertas({ title, products }) {
             product={p}
             width={380}
             onClicked={handleProductClicked}
+            onAddProduct={handleAddProduct}
           />
         ))}
       </Products>

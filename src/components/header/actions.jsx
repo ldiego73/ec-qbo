@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { ReactComponent as User } from "./icons/user.svg";
 import { ReactComponent as Store } from "./icons/store.svg";
 import { COLOR_WHITE, TEXT_COLOR_INVERSE } from "../variables";
+import { useContext } from "react";
+import { EcommerceContext } from "@contexts/ecommerce.context";
+import { formatCurrency } from "@utils/intl.util";
 
 const margin = 32;
 
@@ -55,14 +58,26 @@ const Separator = styled.span`
   height: 28px;
 `;
 
-export const HeaderActions = () => (
-  <Wrapper>
-    <ActionStore to="/cart">
-      <Store /> S/ 0.00
-    </ActionStore>
-    <Separator />
-    <ActionLogin to="/oauth/login">
-      <User /> Iniciar Sesión
-    </ActionLogin>
-  </Wrapper>
-);
+export function HeaderActions() {
+  const { cart } = useContext(EcommerceContext);
+
+  const getTotal = () => {
+    const neto = cart.reduce((total, product) => {
+      return total + product.price*product.quantity;
+    }, 0);
+
+    return formatCurrency(neto);
+  }
+
+  return (
+    <Wrapper>
+      <ActionStore to="/cart">
+        <Store /> {getTotal()}
+      </ActionStore>
+      <Separator />
+      <ActionLogin to="/oauth/login">
+        <User /> Iniciar Sesión
+      </ActionLogin>
+    </Wrapper>
+  );
+}

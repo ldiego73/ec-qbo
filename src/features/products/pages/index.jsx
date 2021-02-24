@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState, useContext } from "react";
+import { useState, useContext, useReducer } from "react";
 
 import {
   TEXT_COLOR_PRIMARY,
@@ -12,6 +12,7 @@ import { CardProduct } from "../../../components/card/products";
 import { useCategories, useProducts } from "../core/hooks";
 import { Redirect } from "react-router-dom";
 import { EcommerceContext } from "../../../contexts/ecommerce.context";
+import { initialState, reducer, SELECT_CATEGORY_ACTION, SELECT_PRODUCT_ACTION, SET_NAME_ACTION } from "../core/reducers/products.reducer";
 
 const Wrapper = styled.div`
   display: flex;
@@ -80,51 +81,45 @@ const ProductRow = styled.div`
   margin-bottom: 40px;
 `;
 
-function getDefaultCategory() {
-  const query = new URLSearchParams(window.location.search);
-
-  if (query.has("category")) return parseInt(query.get("category"));
-
-  return 0;
-}
-
 export function ProductsPage() {
-  const defaultCategory = getDefaultCategory();
-  const { updateProduct } = useContext(EcommerceContext);
+  const { updateProduct, addProductToCart } = useContext(EcommerceContext);
   const categories = useCategories();
-  const [selectedCategory, setSelectedCategory] = useState(defaultCategory);
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [name, setName] = useState("");
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  const products = useProducts(selectedCategory, name);
+  const products = useProducts(state.category, state.name);
 
   function handleChangeName(value) {
-    setName(value);
+    dispatch({ type: SET_NAME_ACTION, name: value });
   }
 
   function handleCategoryClicked(category) {
-    if (category.id === selectedCategory) {
-      setSelectedCategory(0);
+    if (category.id === state.category) {
+      dispatch({ type: SELECT_CATEGORY_ACTION, category: 0 });
     } else {
-      setSelectedCategory(category.id);
+      dispatch({ type: SELECT_CATEGORY_ACTION, category: category.id });
     }
   }
 
   function handleProductClicked(p) {
     updateProduct(p);
-    setSelectedProduct(p);
+    dispatch({ type: SELECT_PRODUCT_ACTION, product: p });
+  }
+
+  function handleAddProduct(product) {
+    addProductToCart(product);
   }
 
   return (
     <Layout showDelivery={true}>
-      {selectedProduct && (
+      {state.product && (
         <Redirect
           to={{
-            pathname: `/products/${selectedProduct.id}`,
+            pathname: `/products/${state.product.id}`,
           }}
         />
       )}
       <Wrapper>
+
         <Sidebar>
           <Title>Nuestros Productos</Title>
           <Search>
@@ -140,7 +135,7 @@ export function ProductsPage() {
               categories.map((c, i) => (
                 <Category
                   key={`category-${i}`}
-                  selected={selectedCategory === c.id}
+                  selected={state.category === c.id}
                   onClick={() => handleCategoryClicked(c)}
                 >
                   {c.name}
@@ -159,6 +154,7 @@ export function ProductsPage() {
                       product={product}
                       width={280}
                       onClicked={handleProductClicked}
+                      onAddProduct={() => handleAddProduct(product)}
                     />
                   ))}
                 </ProductRow>

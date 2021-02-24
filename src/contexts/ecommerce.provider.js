@@ -1,19 +1,44 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import { EcommerceContext } from "./ecommerce.context";
-
-const localProduct = JSON.parse(
-  localStorage.getItem("selectedProduct") || "{}"
-);
+import {
+  reducer,
+  initialState,
+  SELECT_PRODUCT_EC_ACTION,
+  ADD_PRODUCT_EC_ACTION,
+  REMOVE_PRODUCT_EC_ACTION,
+  UPDATE_QUANTITY_PRODUCT_EC_ACTION,
+} from "./ecommerce.reducer";
 
 export function EcommerceProvider({ children }) {
-  const [product, setProduct] = useState(localProduct);
-  const updateProduct = (p) => {
-    localStorage.setItem("selectedProduct", JSON.stringify(p));
-    setProduct(p);
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const updateProduct = (product) => {
+    dispatch({ type: SELECT_PRODUCT_EC_ACTION, selectProduct: product });
+  };
+
+  const addProductToCart = (product) => {
+    dispatch({ type: ADD_PRODUCT_EC_ACTION, product });
+  };
+
+  const removeProductToCart = (productId) => {
+    dispatch({ type: REMOVE_PRODUCT_EC_ACTION, productId });
+  };
+
+  const updateProductQuantityToCart = (productId, quantity) => {
+    dispatch({ type: UPDATE_QUANTITY_PRODUCT_EC_ACTION, productId, quantity });
   };
 
   return (
-    <EcommerceContext.Provider value={{ product, updateProduct }}>
+    <EcommerceContext.Provider
+      value={{
+        product: state.product,
+        cart: state.cart,
+        updateProduct,
+        addProductToCart,
+        removeProductToCart,
+        updateProductQuantityToCart,
+      }}
+    >
       {children}
     </EcommerceContext.Provider>
   );

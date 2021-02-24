@@ -37,6 +37,14 @@ const Wrapper = styled.div`
   cursor: pointer;
 `;
 
-export const Button = ({ type, value }) => (
-  <Wrapper type={type}>{value}</Wrapper>
-);
+export const Button = ({ type, value, onButtonClicked }) => {
+  const handleButtonClicked = () => {
+    if (typeof onButtonClicked === "function") onButtonClicked();
+  };
+
+  return (
+    <Wrapper type={type} onClick={handleButtonClicked}>
+      {value}
+    </Wrapper>
+  );
+};

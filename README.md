@@ -1,5 +1,9 @@
 # Getting Started with Create React App
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ldiego73_ec-qbo&metric=alert_status)](https://sonarcloud.io/dashboard?id=ldiego73_ec-qbo)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=ldiego73_ec-qbo&metric=ncloc)](https://sonarcloud.io/dashboard?id=ldiego73_ec-qbo)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=ldiego73_ec-qbo&metric=sqale_index)](https://sonarcloud.io/dashboard?id=ldiego73_ec-qbo)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

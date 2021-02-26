@@ -19,7 +19,7 @@ const getColor = (type) => {
   return TEXT_COLOR_SECONDARY;
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.button`
   padding: 11px 28px 9px;
   width: auto;
   height: ${BUTTON_HEIGHT};

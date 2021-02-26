@@ -1,0 +1,61 @@
+extends:
+  - airbnb
+  - eslint:recommended
+  - plugin:react/recommended
+  - plugin:jsx-a11y/recommended
+  - prettier
+plugins:
+  - prettier
+  - react
+  - filenames
+  - jsx-a11y
+  - "simple-import-sort"
+parserOptions:
+  sourceType: module
+  ecmaFeatures:
+    jsx: true
+    es6: true
+    classes: true
+    modules: true
+env:
+  browser: true
+  es6: true
+  node: true
+  jest: true
+rules:
+  complexity: [0, 3]
+  eqeqeq: 2
+  import/first: 2
+  import/prefer-default-export: 0
+  no-console: 1
+  no-dupe-keys: 2
+  no-else-return: 2
+  no-empty: 2
+  no-eq-null: 2
+  no-extra-boolean-cast: 2
+  no-extra-semi: 2
+  no-param-reassign: 2
+  no-redeclare: 2
+  no-underscore-dangle: 2
+  no-unreachable: 2
+  no-unused-expressions: 2
+  no-useless-escape: 2
+  object-curly-spacing: [2, always]
+  object-shorthand:
+    - 2
+    - methods
+    - ignoreConstructors: true
+      avoidExplicitReturnArrows: true
+  prettier/prettier: 0
+  react/display-name: 0
+  react/jsx-filename-extension: 0
+  react/jsx-key: 2
+  react/jsx-props-no-spreading:
+    - 2
+    - html: "ignore"
+  react/no-array-index-key: 0
+  react/no-unescaped-entities: 2
+  react/prop-types: 0
+  react/react-in-jsx-scope: 0
+  simple-import-sort/imports: 2
+  use-isnan: 1

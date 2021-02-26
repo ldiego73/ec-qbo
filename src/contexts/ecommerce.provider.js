@@ -1,11 +1,12 @@
 import { useReducer } from "react";
+
 import { EcommerceContext } from "./ecommerce.context";
 import {
-  reducer,
-  initialState,
-  SELECT_PRODUCT_EC_ACTION,
   ADD_PRODUCT_EC_ACTION,
+  initialState,
+  reducer,
   REMOVE_PRODUCT_EC_ACTION,
+  SELECT_PRODUCT_EC_ACTION,
   UPDATE_QUANTITY_PRODUCT_EC_ACTION,
 } from "./ecommerce.reducer";
 

@@ -1,5 +1,8 @@
-import { useFetch } from "@hooks/use-fetch";
+/* eslint-disable import/no-unresolved */
+
 import { API_URL } from "@features/base";
+import { useFetch } from "@hooks/use-fetch";
+
 import { mapToModel } from "../mappers/categories.mapper";
 
 export function useCategories() {

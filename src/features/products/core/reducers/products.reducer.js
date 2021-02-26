@@ -5,7 +5,7 @@ export const SET_NAME_ACTION = "SET_NAME_ACTION";
 function getDefaultCategory() {
   const query = new URLSearchParams(window.location.search);
 
-  if (query.has("category")) return parseInt(query.get("category"));
+  if (query.has("category")) return parseInt(query.get("category"), 10);
 
   return 0;
 }

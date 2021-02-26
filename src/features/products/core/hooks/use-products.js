@@ -44,7 +44,7 @@ export function useProducts(categoryId, name) {
       product: mapToModel(product),
     });
 
-    if (index % 3 === 2) i++;
+    if (index % 3 === 2) i+=1;
   });
 
   return data;

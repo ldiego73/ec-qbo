@@ -24,7 +24,7 @@ function addProduct(state, product) {
   } else {
     const updatedProduct = { ...cart[matchedProduct] };
 
-    updatedProduct.quantity++;
+    updatedProduct.quantity+=1;
 
     cart[matchedProduct] = updatedProduct;
   }
@@ -39,7 +39,7 @@ function removeProductById(state, productId) {
   const matchedProduct = cart.findIndex((p) => p.id === productId);
   const updatedProduct = { ...cart[matchedProduct] };
 
-  updatedProduct.quantity--;
+  updatedProduct.quantity-=1;
 
   if (updatedProduct.quantity <= 0) cart.splice(matchedProduct, 1);
   else cart[matchedProduct] = updatedProduct;

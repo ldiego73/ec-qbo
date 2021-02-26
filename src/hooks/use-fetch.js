@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect,useState } from "react";
 
 export function useFetch(url, options = {}) {
   const [response, setResponse] = useState(null);
@@ -18,8 +18,8 @@ export function useFetch(url, options = {}) {
         const { data } = await axios.get(url, options);
 
         if (isNotAborted()) setResponse(data);
-      } catch (error) {
-        if (isNotAborted()) setError(error);
+      } catch (err) {
+        if (isNotAborted()) setError(err);
       } finally {
         if (isNotAborted()) setLoading(false);
       }

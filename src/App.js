@@ -1,7 +1,7 @@
 import { BrowserRouter as Router } from "react-router-dom";
 
+import { EcommerceProvider } from "./contexts";
 import { Navigation } from "./features/navigation";
-import { EcommerceProvider } from "./contexts/ecommerce.provider";
 
 function App() {
   return (

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { TEXT_COLOR_PRIMARY } from "./variables";
 
 const Wrapper = styled.h2`

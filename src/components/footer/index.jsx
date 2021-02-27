@@ -1,6 +1,8 @@
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
 import { Container } from "../container";
+import { Content } from "../content";
 import {
   COLOR_GRAY,
   COLOR_SECONDARY,
@@ -9,11 +11,8 @@ import {
   TEXT_COLOR_GRAY,
   TEXT_COLOR_INVERSE,
 } from "../variables";
-
 import { ReactComponent as Facebook } from "./icons/fb.svg";
 import { ReactComponent as Instagram } from "./icons/ig.svg";
-
-import { Content } from "../content";
 
 const Wrapper = styled.footer`
   padding: 0 ${PADDING.DEFAULT}px;

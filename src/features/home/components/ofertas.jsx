@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import { useContext, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
+import styled from "styled-components";
 
 import { CardProduct } from "../../../components/card/products";
 import { Title } from "../../../components/title";
 import { TEXT_COLOR_SECONDARY } from "../../../components/variables";
-import { useContext, useState } from "react";
 import { EcommerceContext } from "../../../contexts/ecommerce.context";
 
 const Wrapper = styled.div`
@@ -56,7 +56,7 @@ export function Ofertas({ title, products }) {
         />
       )}
       <Header>
-        <Title value={title} flex={true} />
+        <Title value={title} flex />
         <LinkWrapper to="/products">Ver catálogo completo</LinkWrapper>
       </Header>
       <Products>

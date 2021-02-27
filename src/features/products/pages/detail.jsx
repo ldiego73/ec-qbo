@@ -1,15 +1,14 @@
-import { useContext } from "react";
-import { Link, Redirect, useParams } from "react-router-dom";
-import styled from "styled-components";
+import { Button } from "@components/button";
 import {
   TEXT_COLOR_GRAY,
   TEXT_COLOR_PRIMARY,
   TEXT_COLOR_SECONDARY,
 } from "@components/variables";
-import { Button } from "@components/button";
-
-import { Layout } from "@layouts/main";
 import { EcommerceContext } from "@contexts/ecommerce.context";
+import { Layout } from "@layouts/main";
+import { useContext } from "react";
+import { Link, Redirect, useParams } from "react-router-dom";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: flex;

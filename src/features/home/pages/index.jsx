@@ -3,7 +3,6 @@ import { Categories } from "../components/categories";
 import { Contactenos } from "../components/contactenos";
 import { Ofertas } from "../components/ofertas";
 import { Separator } from "../components/separator";
-
 import { useOfertas, usePopulares } from "../core";
 
 export function HomePage() {
@@ -11,7 +10,7 @@ export function HomePage() {
   const populares = usePopulares();
 
   return (
-    <Layout showDelivery={true} showBanner={true}>
+    <Layout showDelivery showBanner>
       <Categories />
       <Separator />
       {ofertas && (

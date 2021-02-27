@@ -1,17 +1,15 @@
+import { useContext, useReducer } from "react";
+import { Redirect } from "react-router-dom";
 import styled from "styled-components";
-import { useState, useContext, useReducer } from "react";
 
+import { CardProduct } from "../../../components/card/products";
 import {
   TEXT_COLOR_PRIMARY,
   TEXT_COLOR_SECONDARY,
 } from "../../../components/variables";
-
-import { Layout } from "../../../layouts/main";
-import { CardProduct } from "../../../components/card/products";
-
-import { useCategories, useProducts } from "../core/hooks";
-import { Redirect } from "react-router-dom";
 import { EcommerceContext } from "../../../contexts/ecommerce.context";
+import { Layout } from "../../../layouts/main";
+import { useCategories, useProducts } from "../core/hooks";
 import { initialState, reducer, SELECT_CATEGORY_ACTION, SELECT_PRODUCT_ACTION, SET_NAME_ACTION } from "../core/reducers/products.reducer";
 
 const Wrapper = styled.div`
@@ -110,7 +108,7 @@ export function ProductsPage() {
   }
 
   return (
-    <Layout showDelivery={true}>
+    <Layout showDelivery>
       {state.product && (
         <Redirect
           to={{

@@ -1,12 +1,12 @@
-import { Layout } from "@layouts/main";
-import { Title } from "@components/title";
 import { Button } from "@components/button";
+import { Title } from "@components/title";
 import { COLOR_WHITE, TEXT_COLOR_PRIMARY } from "@components/variables";
 import { EcommerceContext } from "@contexts/ecommerce.context";
-import styled from "styled-components";
+import { Layout } from "@layouts/main";
+import { formatCurrency } from "@utils/intl.util";
 import { useContext, useState } from "react";
 import CounterInput from "react-counter-input";
-import { formatCurrency } from "@utils/intl.util";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   margin-top: 60px;
@@ -145,11 +145,7 @@ export function CartPage() {
     EcommerceContext
   );
 
-  const getSubTotal = () => {
-    return cart.reduce((total, product) => {
-      return total + product.price * product.quantity;
-    }, 0);
-  };
+  const getSubTotal = () => cart.reduce((total, product) => total + product.price * product.quantity, 0);
 
   const getModalidad = () => {
     if (modalidad === 1) return 10;

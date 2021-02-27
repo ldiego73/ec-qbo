@@ -1,10 +1,11 @@
-import styled from "styled-components";
 import GoogleMapReact from "google-map-react";
+import styled from "styled-components";
+
+import { Title } from "../../../components/title";
 import {
   TEXT_COLOR_PRIMARY,
   TEXT_COLOR_SECONDARY,
 } from "../../../components/variables";
-import { Title } from "../../../components/title";
 
 const Wrapper = styled.div`
   display: flex;

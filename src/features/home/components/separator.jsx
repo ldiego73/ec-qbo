@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { COLOR_GRAY_LIGHT } from "../../../components/variables";
 
 const Wrapper = styled.div`

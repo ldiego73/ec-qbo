@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { COLOR_SECONDARY, TEXT_COLOR_INVERSE } from "./variables";
 
 const Wrapper = styled.div`

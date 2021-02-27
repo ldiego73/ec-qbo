@@ -1,12 +1,11 @@
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 import { Container } from "../container";
+import { Content } from "../content";
 import { COLOR_PRIMARY, HEADER_HEIGHT, TEXT_COLOR_INVERSE } from "../variables";
 import { HeaderActions } from "./actions";
 import { HeaderLinks } from "./links";
-
-import { Content } from "../content";
 
 const Wrapper = styled.header`
   background: ${COLOR_PRIMARY};

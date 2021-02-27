@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import {
   BUTTON_HEIGHT,
   COLOR_PRIMARY,
@@ -10,7 +11,7 @@ import {
 
 const getBackground = (type) => {
   if (type === "primary") return COLOR_PRIMARY;
-  else if (type === "inverse") return COLOR_SECONDARY;
+  if (type === "inverse") return COLOR_SECONDARY;
   return COLOR_WHITE;
 };
 

@@ -1,18 +1,40 @@
-import { node, bool } from "prop-types";
-import { Header } from "@components/header";
-import { Footer } from "@components/footer";
+/* eslint-disable import/no-unresolved */
+
+import { Banner, BannerImage } from "@components/banner";
 import { Container } from "@components/container";
 import { Content } from "@components/content";
 import { Delivery } from "@components/delivery";
-import { Banner, BannerImage } from "@components/banner";
+import { Footer } from "@components/footer";
+import { Header } from "@components/header";
+import { bool, node } from "prop-types";
 
 export const Layout = ({ children, showDelivery, showBanner }) => {
   const images = [
-    <BannerImage src="https://ec-qbo.herokuapp.com/banners/1.jpg" alt="Banner 1" />,
-    <BannerImage src="https://ec-qbo.herokuapp.com/banners/2.jpg" alt="Banner 2" />,
-    <BannerImage src="https://ec-qbo.herokuapp.com/banners/3.jpg" alt="Banner 3" />,
-    <BannerImage src="https://ec-qbo.herokuapp.com/banners/4.jpg" alt="Banner 4" />,
-    <BannerImage src="https://ec-qbo.herokuapp.com/banners/5.jpg" alt="Banner 5" />,
+    <BannerImage
+      key="banner-0"
+      src="https://ec-qbo.herokuapp.com/banners/1.jpg"
+      alt="Banner 1"
+    />,
+    <BannerImage
+      key="banner-1"
+      src="https://ec-qbo.herokuapp.com/banners/2.jpg"
+      alt="Banner 2"
+    />,
+    <BannerImage
+      key="banner-2"
+      src="https://ec-qbo.herokuapp.com/banners/3.jpg"
+      alt="Banner 3"
+    />,
+    <BannerImage
+      key="banner-3"
+      src="https://ec-qbo.herokuapp.com/banners/4.jpg"
+      alt="Banner 4"
+    />,
+    <BannerImage
+      key="banner-4"
+      src="https://ec-qbo.herokuapp.com/banners/5.jpg"
+      alt="Banner 5"
+    />,
   ];
 
   return (
@@ -26,6 +48,11 @@ export const Layout = ({ children, showDelivery, showBanner }) => {
       <Footer />
     </>
   );
+};
+
+Layout.defaultProps = {
+  showDelivery: false,
+  showBanner: false,
 };
 
 Layout.propTypes = {

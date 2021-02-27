@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { CONTAINER_WIDTH } from "./variables";
 
 const Wrapper = styled.div`

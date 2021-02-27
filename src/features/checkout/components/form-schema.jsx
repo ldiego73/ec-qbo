@@ -1,7 +1,8 @@
 import { Button } from "@components/button";
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 
+import { CompraSchema } from "../core/schemas";
 import { useDistritos } from "../core/use-distritos";
 import {
   Card,
@@ -13,8 +14,6 @@ import {
   FormLabel,
   FormSelect,
 } from "./styles";
-
-import { CompraSchema } from "../core/schemas";
 
 export function FormSchema() {
   const { register, handleSubmit, errors } = useForm({

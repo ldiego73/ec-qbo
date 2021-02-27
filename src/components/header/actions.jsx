@@ -1,12 +1,12 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-
-import { ReactComponent as User } from "./icons/user.svg";
-import { ReactComponent as Store } from "./icons/store.svg";
-import { COLOR_WHITE, TEXT_COLOR_INVERSE } from "../variables";
-import { useContext } from "react";
 import { EcommerceContext } from "@contexts/ecommerce.context";
 import { formatCurrency } from "@utils/intl.util";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+import { COLOR_WHITE, TEXT_COLOR_INVERSE } from "../variables";
+import { ReactComponent as Store } from "./icons/store.svg";
+import { ReactComponent as User } from "./icons/user.svg";
 
 const margin = 32;
 
@@ -62,9 +62,7 @@ export function HeaderActions() {
   const { cart } = useContext(EcommerceContext);
 
   const getTotal = () => {
-    const neto = cart.reduce((total, product) => {
-      return total + product.price*product.quantity;
-    }, 0);
+    const neto = cart.reduce((total, product) => total + product.price*product.quantity, 0);
 
     return formatCurrency(neto);
   }

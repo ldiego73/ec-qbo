@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { PADDING } from "./variables";
 
 const Wrapper = styled.div`

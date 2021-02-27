@@ -1,5 +1,5 @@
+import { COLOR_PRIMARY, COLOR_WHITE, TEXT_COLOR_PRIMARY } from "@components/variables";
 import styled from "styled-components";
-import { COLOR_WHITE, COLOR_PRIMARY, TEXT_COLOR_PRIMARY } from "@components/variables";
 
 export const Card = styled.div`
   background: ${COLOR_WHITE};

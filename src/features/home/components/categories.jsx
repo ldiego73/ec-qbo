@@ -1,12 +1,12 @@
+import { useState } from "react";
+import { Redirect } from "react-router-dom";
 import styled from "styled-components";
-import { useState, useEffect } from "react";
-import { useCategories } from "../core";
 
 import {
   COLOR_GRAY_LIGHT,
   TEXT_COLOR_PRIMARY,
 } from "../../../components/variables";
-import { Redirect } from "react-router-dom";
+import { useCategories } from "../core";
 
 const Wrapper = styled.div`
   display: flex;

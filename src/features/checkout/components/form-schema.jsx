@@ -22,8 +22,7 @@ export function FormSchema() {
   });
   const distritos = useDistritos();
 
-  function onSubmit(datos) {
-  }
+  function onSubmit() {}
 
   return (
     <Card>

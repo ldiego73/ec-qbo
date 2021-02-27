@@ -29,13 +29,13 @@ jobs:
         run: yarn build
 
       - name: Archive Test results
-        uses: actions/upload-artifacts@v1
+        uses: actions/upload-artifact@v1
         with:
           name: test-report
           path: reports/test
 
       - name: Archive Coverage results
-        uses: actions/upload-artifacts@v1
+        uses: actions/upload-artifact@v1
         with:
           name: coverage-report
           path: reports/coverage

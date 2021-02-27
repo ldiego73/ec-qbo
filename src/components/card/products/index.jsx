@@ -62,7 +62,6 @@ const Footer = styled.div`
 
 export function CardProduct({ product, width, onClicked, onAddProduct }) {
   function handleClick(p) {
-    console.log("Esto es una prueba");
     if (typeof onClicked === "function") {
       onClicked(p);
     }

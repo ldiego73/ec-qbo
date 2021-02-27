@@ -23,7 +23,6 @@ export function FormSchema() {
   const distritos = useDistritos();
 
   function onSubmit(datos) {
-    console.log("Datos => ", datos);
   }
 
   return (

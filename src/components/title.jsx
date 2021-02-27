@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 import { TEXT_COLOR_PRIMARY } from "./variables";
@@ -12,5 +13,5 @@ const Wrapper = styled.h2`
 `;
 
 export const Title = ({ value, flex }) => (
-  <Wrapper flex={flex}>{value}</Wrapper>
+  <Wrapper flex={flex} data-testid="title">{value}</Wrapper>
 );

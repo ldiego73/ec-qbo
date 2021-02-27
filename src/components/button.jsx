@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 import {
@@ -44,7 +45,7 @@ export const Button = ({ type, value, onButtonClicked }) => {
   };
 
   return (
-    <Wrapper type={type} onClick={handleButtonClicked}>
+    <Wrapper data-testid="button" type={type} onClick={handleButtonClicked}>
       {value}
     </Wrapper>
   );

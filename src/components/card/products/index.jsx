@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 import { Button } from "../../button";
@@ -78,6 +79,7 @@ export function CardProduct({ product, width, onClicked, onAddProduct }) {
       <Image
         src={product.image}
         loading="lazy"
+        data-testid="card-product-image"
         onClick={() => handleClick(product)}
       />
       <Header>

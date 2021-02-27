@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="D:\Luis Diego\ec-qbo\test\components\button.spec.js">
+    <testCase name="Component Button Render correctly" duration="26"/>
+    <testCase name="Component Button El valor del button se encuentra en el HTML" duration="11"/>
+    <testCase name="Component Button Puedo hacer click" duration="26"/>
+  </file>
+  <file path="D:\Luis Diego\ec-qbo\test\components\card.spec.js">
+    <testCase name="Component Card Product Render correctly" duration="48"/>
+    <testCase name="Component Card Product Puedes hacer click" duration="37"/>
+  </file>
+  <file path="D:\Luis Diego\ec-qbo\test\components\title.spec.js">
+    <testCase name="Component Title Render correctly" duration="32"/>
+    <testCase name="Component Title El valor del titulo se encuentra en el HTML" duration="5"/>
+    <testCase name="Component Title Validar que el titulo tenga flex: 1" duration="36"/>
+  </file>
+  <file path="D:\Luis Diego\ec-qbo\test\hooks\use-fetch.spec.js">
+    <testCase name="Hook: Use Fetch Render correctly" duration="18"/>
+    <testCase name="Hook: Use Fetch Render con error" duration="4"/>
+  </file>
+</testExecutions>
